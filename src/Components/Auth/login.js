@@ -39,9 +39,8 @@ class Login extends Component {
 
   handleAuthUser = () => {
     if (this.state.id) {
-      this.props.dispatch(
-        handleAllInitialData(this.state.id, this.props.history)
-      );
+      this.props.dispatch(handleAllInitialData(this.state.id));
+      this.props.history.push("/home");
     } else {
       alert("Please choose a user");
     }

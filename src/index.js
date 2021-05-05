@@ -7,8 +7,21 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducers from "./reducers";
 import middleware from "./middlewares.js";
+import { handleAllInitialData } from "./actions/shared";
 
 const store = createStore(reducers, middleware);
+
+const token = JSON.parse(localStorage.getItem("userId"));
+
+try {
+  if (token) {
+    store.dispatch(handleAllInitialData(token));
+  } else {
+    console.log("nothing");
+  }
+} catch (error) {
+  console.log(error);
+}
 
 ReactDOM.render(
   <Provider store={store}>

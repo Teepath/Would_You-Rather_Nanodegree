@@ -14,7 +14,7 @@ class Header extends Component {
         <div className="nav">
           <ul>
             <li>
-              <NavLink to="/dashboard" exact activeClassName="active">
+              <NavLink to="/home" activeClassName="active">
                 Home
               </NavLink>
             </li>
@@ -29,7 +29,7 @@ class Header extends Component {
               </NavLink>{" "}
             </li>
           </ul>
-          {user && localStorage.getItem("userToken") ? (
+          {user ? (
             <div className="auth-nav">
               <div>{user.name}</div>
               <div>

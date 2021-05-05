@@ -46,7 +46,6 @@ export function addAnsweredQuestion(info) {
     return handleQuestionAnswer(info).catch((e) => {
       console.warn("Error in voting", e);
       dispatch(saveAnswered(info));
-      alert("There was an error, try again.");
     });
   };
 }

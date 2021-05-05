@@ -21,6 +21,6 @@ export function signOutUser() {
 
 export const logOut = (history) => (dispatch) => {
   dispatch(signOutUser());
-  // window.location.href = "/";
-  history.push("/");
+  localStorage.removeItem("userId");
+  history.push("/login");
 };

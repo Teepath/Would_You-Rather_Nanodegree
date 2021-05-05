@@ -4,23 +4,28 @@ import PropTypes from "prop-types";
 
 function QuestionCard({ text, vote, total, width, userVote }) {
   console.log(userVote);
-  return (
-    <div className="poll_card">
-      {userVote ? <YourVote /> : null}
-      <h4>{text}</h4>
-      <div className="poll_result">
-        <div
-          style={{
-            background: "green",
-            width: `${Math.floor(width)}%`,
-          }}
-        >
-          {Math.floor(width)}%
+  if (text) {
+    return (
+      <div className="poll_card">
+        <h3> Would you rather</h3>
+        {userVote ? <YourVote /> : null}
+        <h4>{text}</h4>
+        <div className="poll_result">
+          <div
+            style={{
+              background: "green",
+              width: `${Math.floor(width)}%`,
+            }}
+          >
+            {Math.floor(width)}%
+          </div>
         </div>
+        <p>{`${vote} out of ${total}votes`}</p>
       </div>
-      <p>{`${vote} out of ${total}votes`}</p>
-    </div>
-  );
+    );
+  } else {
+    return <div> No page Found</div>;
+  }
 }
 
 QuestionCard.propTypes = {

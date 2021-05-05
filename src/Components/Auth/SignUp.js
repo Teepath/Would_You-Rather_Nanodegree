@@ -9,8 +9,9 @@ function SignUp(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(handleNewUserCreation(name, props.history));
-    console.log(name);
+    dispatch(handleNewUserCreation(name));
+
+    props.history.push("/home");
   };
 
   const disabled = () => {

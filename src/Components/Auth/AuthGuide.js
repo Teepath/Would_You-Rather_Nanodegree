@@ -6,10 +6,10 @@ const AuthRoute = ({ component: Component, authenticated, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      authenticated == null ? (
-        <Redirect to="/no-page" />
-      ) : (
+      JSON.parse(localStorage.getItem("userId")) ? (
         <Component {...props} />
+      ) : (
+        <Redirect to="/no-page" />
       )
     }
   />

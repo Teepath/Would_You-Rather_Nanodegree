@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { formatQuestion } from "../../utils/helpers";
 import AnsweredPoll from "../Poll/Pol";
 import { addAnsweredQuestion } from "../../actions/questions";
+import { Redirect } from "react-router-dom";
 
 class Question extends Component {
   state = {
@@ -30,85 +31,81 @@ class Question extends Component {
 
   render() {
     const { question, authedUser } = this.props;
-    console.log(this.state);
 
-    const {
-      name,
-      avatar,
-      optionOneText,
-      optionTwoText,
-      optionTwoHasVote,
-      optionOneHasVote,
-    } = question;
-    console.log(question);
-
-    if (optionOneHasVote || optionTwoHasVote) {
-      return <AnsweredPoll question={question} authedUser={authedUser} />;
+    if (question) {
+      if (question.optionOneHasVote || question.optionTwoHasVote) {
+        return <AnsweredPoll question={question} authedUser={authedUser} />;
+      }
     }
-    return (
-      <div className="question_wrapper">
-        <div className="card_wrapper">
-          <div className="card_header">{`${name} asks:`}</div>
-          <div className="card_body">
-            <div className="card_avatar">
-              <img src={avatar} alt="profile" className="avatar" />
-            </div>
-            <div className="v_line"></div>
-            <div className="card_content">
-              <h4> Would you rather</h4>
-              <form onSubmit={this.handleSummit}>
-                <label htmlFor="option_1">
-                  <input
-                    type="radio"
-                    id="option_one"
-                    name="question"
-                    value="optionOne"
-                    onChange={(e) => this.handleChange(e)}
-                  />
-                  {optionOneText}
-                  {/* <span className="checkmark"></span> */}
-                </label>
-                <br />
-                <label htmlFor="option_2">
-                  <input
-                    type="radio"
-                    id="option_two"
-                    name="question"
-                    value="optionTwo"
-                    onChange={(e) => this.handleChange(e)}
-                  />
-                  {optionTwoText}
-                  {/* <span className="checkmark"></span> */}
-                </label>
-                <button
-                  type="submit"
-                  style={{
-                    margin: "5px",
-                    background: "ligth-green",
-                    color: "white",
-                  }}
-                  disabled={this.handleDisabled()}
-                >
-                  Submit
-                </button>
-              </form>
+
+    if (question) {
+      return (
+        <div className="question_wrapper">
+          <div className="card_wrapper">
+            <div className="card_header">{`${question.name} asks:`}</div>
+            <div className="card_body">
+              <div className="card_avatar">
+                <img src={question.avatar} alt="profile" className="avatar" />
+              </div>
+              <div className="v_line"></div>
+              <div className="card_content">
+                <h4> Would you rather</h4>
+                <form onSubmit={this.handleSummit}>
+                  <label htmlFor="option_1">
+                    <input
+                      type="radio"
+                      id="option_one"
+                      name="question"
+                      value="optionOne"
+                      onChange={(e) => this.handleChange(e)}
+                    />
+                    {question.optionOneText}
+                    {/* <span className="checkmark"></span> */}
+                  </label>
+                  <br />
+                  <label htmlFor="option_2">
+                    <input
+                      type="radio"
+                      id="option_two"
+                      name="question"
+                      value="optionTwo"
+                      onChange={(e) => this.handleChange(e)}
+                    />
+                    {question.optionTwoText}
+                    {/* <span className="checkmark"></span> */}
+                  </label>
+                  <button
+                    type="submit"
+                    style={{
+                      margin: "5px",
+                      background: "ligth-green",
+                      color: "white",
+                    }}
+                    disabled={this.handleDisabled()}
+                  >
+                    Submit
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <div> No Page Found</div>;
+    }
   }
 }
 
 const mapStateToprop = ({ questions, users, authedUser }, props) => {
   const { id } = props.match.params;
-  const question = questions ? questions[id] : null;
+  const question = questions ? questions[id] : props.history.push("/no-page");
   return {
     id,
     authedUser,
     question: question
       ? formatQuestion(question, users[question.author], authedUser)
-      : null,
+      : props.history.push("/no-page"),
   };
 };
 

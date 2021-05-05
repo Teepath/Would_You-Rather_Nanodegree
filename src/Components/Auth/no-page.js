@@ -15,7 +15,7 @@ const Nopage = () => {
     >
       <p>
         404 page Please sign in{" "}
-        <Link to="/" style={{ background: "green" }}>
+        <Link to="/login" style={{ background: "green" }}>
           here{" "}
         </Link>{" "}
       </p>
