@@ -1,14 +1,12 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
@@ -16,55 +14,113 @@ You will also see any lint errors in the console.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### About The Project
 
-### `yarn build`
+The project is titled Would You Rather. It is my second projects of Nanodegree program. This is to demonstrate my deep grasp an understanding of React and Redux skills.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Apliication Structures
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This application contains several folders and files which are listed in no particular order:
+-README.md
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- package.json
+  -index.js
+  -index.css
+  -src
+  --utils
+  ---helpers
+  ---api.js
+  ---\_DATA.js
+  --reducers
+  ---authedUser.js
+  ---index.js
+  ---questions.js
+  ---users.js
+  --middlewares.js
+  ---index.js
+  ---logger.js
+  --Components
+  ---Poll
+  ----Pol.js
+  ----PoliCard.js
+  ----YourVote.js
+  ---Nav
+  ----Header.js
+  ---LeaderBoard
+  ----Card.js
+  ----LeaderBoard.js
+  ---Home
+  ----AnsweredCard
+  ----Card.js
+  ----Dashboard.js
+  ----DisplayAnswered.js
+  ----DisplayCard.js
+  ---Forms
+  ----Question.js
+  ----QuestionForm.js
+  ---Auth
+  ----AuthGuide.js
+  ----DropDown
+  ----login.js
+  ----no-page.js
+  ----SignUp.js
+  --App.js
+  -assets
+  --action
+  ---authedUser.js
+  ---questions.js
+  ---shared.js
+  ---users.js
+  --reducers
+  ---authedUser.js
+  ---index.js
+  ---questions.js
+  ---users.js
 
-### `yarn eject`
+### util
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The util folder contains the files - \_DATA.js, api, helpers
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### \_DATA.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This serves as backend for the applications. contains users, questions data as well methods for fetching the data
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#####
+
+## APIS
+
+This files hold the method for calling the backend methods
+
+##
+
+### helpers.js
+
+It has the method for formathing question.
+
+###
+
+### Actions.js
+
+This folders contains different files of different actions and actionCreators such as:
+
+## getUserID that dispatch setAuthedUserId that taken id argument and logOUt- set user id to null
+
+##
+
+## handleGetAllUsers execute \_getUsers and dispatch getUsers which taken users objects return from \_getUsers. Also contains handleNewUserCreation method that execute \_createUser which returns user object, which then passing in to dispatch createNewUser method. handleAllInitialData method is also dispatched by handleNewUserCreation with id extracted from the new user as a parameter.
+
+##
+
+##
+
+## The app also have saveAnswered takes three arguments- authedUser, qid, answer , handleAddQuestion takes three argument : author, optionOneText, optionTwoText
+
+## addAnsweredQuestion takes an object of three fields: authedUser, qid, answer
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## reducers folders
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contains the login for all the states of the application.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##
