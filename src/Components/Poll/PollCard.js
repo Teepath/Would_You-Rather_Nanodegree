@@ -24,7 +24,7 @@ function QuestionCard({ text, vote, total, width, userVote }) {
 }
 
 QuestionCard.propTypes = {
-  textr: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   vote: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
