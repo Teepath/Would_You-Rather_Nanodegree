@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { formatQuestion } from "../../utils/helpers";
 import AnsweredPoll from "../Poll/Pol";
 import { addAnsweredQuestion } from "../../actions/questions";
-import { Redirect } from "react-router-dom";
 
 class Question extends Component {
   state = {

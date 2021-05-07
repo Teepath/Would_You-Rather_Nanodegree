@@ -3,8 +3,8 @@ import image from "../../assets/logo.png";
 import Dropdown from "./Dropdown";
 import { connect } from "react-redux";
 import { handleGetAllUsers } from "../../actions/users";
-import { handleAllInitialData } from "../../actions/shared";
-import { Link } from "react-router-dom";
+import { getUserID } from "../../actions/authedUser";
+import { Link, Redirect } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -30,24 +30,22 @@ class Login extends Component {
     }));
   };
 
-  // isItemSelection = (item) => {
-  //   if (this.state.selection.find((current) => current.id === item.id)) {
-  //     return true;
-  //   }
-  //   return false;
-  // };
-
   handleAuthUser = () => {
     if (this.state.id) {
-      this.props.dispatch(handleAllInitialData(this.state.id));
-      this.props.history.push("/home");
+      this.props.dispatch(getUserID(this.state.id));
     } else {
       alert("Please choose a user");
     }
   };
 
   render() {
-    const { users } = this.props;
+    const { users, authedUser, location } = this.props;
+
+    const { state } = location;
+
+    if (authedUser) {
+      return <Redirect to={state?.from || "/"} />;
+    }
 
     return (
       <div className="container">
@@ -86,6 +84,7 @@ class Login extends Component {
 const mapStateToprop = ({ users, authedUser }) => {
   return {
     users: users,
+    authedUser,
   };
 };
 

@@ -6,10 +6,15 @@ const AuthRoute = ({ component: Component, authenticated, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      JSON.parse(localStorage.getItem("userId")) ? (
+      authenticated ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/no-page" />
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: { from: props.location },
+          }}
+        />
       )
     }
   />

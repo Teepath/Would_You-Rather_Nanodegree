@@ -8,6 +8,7 @@ import { createStore } from "redux";
 import reducers from "./reducers";
 import middleware from "./middlewares.js";
 import { handleAllInitialData } from "./actions/shared";
+import { getUserID } from "./actions/authedUser";
 
 const store = createStore(reducers, middleware);
 
@@ -16,6 +17,7 @@ const token = JSON.parse(localStorage.getItem("userId"));
 try {
   if (token) {
     store.dispatch(handleAllInitialData(token));
+    store.dispatch(getUserID(token));
   } else {
     console.log("nothing");
   }

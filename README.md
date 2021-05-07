@@ -1,8 +1,6 @@
-This project Would You Rather. Run npm start or yarn start to lunch the application.
+This project titled Would You Rather. To get started, first run yarn install or npm install. Run npm start or yarn start to lunch the application.
 
 ### `yarn start`
-
-R
 
 ### `yarn Start or run npm start to lunch this application`
 

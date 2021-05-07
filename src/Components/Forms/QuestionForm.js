@@ -31,7 +31,7 @@ class QuestionForm extends Component {
       handleAddQuestion({ optionOneText, optionTwoText, author })
     );
 
-    this.props.history.push("/home");
+    this.props.history.push("/");
   };
 
   render() {

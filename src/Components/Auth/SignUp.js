@@ -11,7 +11,7 @@ function SignUp(props) {
     e.preventDefault();
     dispatch(handleNewUserCreation(name));
 
-    props.history.push("/home");
+    props.history.push("/");
   };
 
   const disabled = () => {

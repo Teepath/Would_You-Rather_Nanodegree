@@ -16,6 +16,10 @@ class Dashboard extends Component {
     this.setState(() => ({
       is_answered: true,
     }));
+
+    if (this.props.loading) {
+      this.props.history.push("/login");
+    }
   };
 
   handleToggleUnanswered = () => {
@@ -27,7 +31,6 @@ class Dashboard extends Component {
   render() {
     const { questionids } = this.props;
 
-    console.log(questionids);
     return (
       <Fragment>
         <LoadingBar />
@@ -36,13 +39,15 @@ class Dashboard extends Component {
             <div className="dashboard-header">
               <div
                 className="unanswered"
+                style={{ background: !this.state.is_answered ? "green" : null }}
                 onClick={() => this.handleToggleUnanswered()}
               >
-                Unanswered Questions
+                Unanswered Questions{" "}
               </div>
               <div
                 className="answered"
                 onClick={() => this.handleToggleAnswered()}
+                style={{ background: this.state.is_answered ? "green" : null }}
               >
                 Answered Questions
               </div>

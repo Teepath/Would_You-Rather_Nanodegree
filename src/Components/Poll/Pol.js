@@ -1,7 +1,6 @@
 import React from "react";
 import QuestionCard from "./PollCard";
 import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
 
 function Poll({ question, authedUser }) {
   const {
