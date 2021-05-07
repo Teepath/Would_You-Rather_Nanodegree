@@ -3,6 +3,7 @@ import Card from "./Card";
 import AnsweredView from "./AnsweredCard";
 import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading";
+import { Redirect } from "react-router-dom";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -29,7 +30,11 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { questionids } = this.props;
+    const { questionids, authedUser } = this.props;
+
+    if (authedUser === null) {
+      return <Redirect to="/login" />;
+    }
 
     return (
       <Fragment>
@@ -69,6 +74,7 @@ class Dashboard extends Component {
 
 const mapStateToprop = ({ questions, authedUser }) => {
   return {
+    authedUser,
     questionids: questions
       ? Object.keys(questions).sort(
           (a, b) => questions[b].timestamp - questions[a].timestamp
